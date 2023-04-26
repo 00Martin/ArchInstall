@@ -15,7 +15,7 @@ A little resume of what my script does:
 
 Choices :
 To make this script my universal install script, I implemented a choice for 3 different types of system :
-- Full AMD (Amd CPU microcode + Amd GPU drivers, WARNING: NOT TESTED, I CURRENTLY DO NOT OWN AMD HARDWARE)
+- Full AMD (Amd CPU microcode + Amd GPU drivers, NOT TESTED because I don't own AMD hardware)
 - Full Intel (Intel CPU microcode)
 - Intel + Nvidia (Intel CPU microcode + Nvidia GPU drivers)
 
