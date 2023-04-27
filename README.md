@@ -12,6 +12,7 @@ A little resume of what my script does:
 - Single boot (it must NOT be used for dualbooting, it will erase your disk, you are warned)
 - No swap
 - System in American English with Swiss french keyboard
+- No browser installed, you get to install your favorite browser yourself!
 
 Choices :
 To make this script my universal install script, I implemented a choice for 3 different types of system :
