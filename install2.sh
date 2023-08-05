@@ -49,7 +49,7 @@ systemctl enable bluetooth.service
 #Some manual intervention required from the user
 echo -e "\n\nATTENTION REQUIRED\nWe need to add our new user to the sudoer file, to do this ->\nUse the following command: EDITOR=nano visudo\nAdd this line with the correct username under the user privilege specification: NAMEOFUSER ALL=(ALL) ALL"
 
-echo -e "\nOnce this step is done, you can reboot and delete the script from the home folder."
+echo -e "\nOnce this step is done, you can reboot and start the next script. All files will be cleaned at the end of the process"
 
 
 #If the user did not uncomment the additional sources from the pacman config file, we stop
