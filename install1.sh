@@ -61,11 +61,14 @@ echo "LANG=en_US.UTF-8"     >   /mnt/etc/locale.conf
 echo "KEYMAP=fr_CH"     >   /mnt/etc/vconsole.conf
 echo "XKBLAYOUT=ch"     >>  /mnt/etc/vconsole.conf
 echo "XKBVARIANT=fr"    >>  /mnt/etc/vconsole.conf
+
+echo -e "\n\nEnter the desired hostname for this computer, input is not verified."
+read cpthostname
 #set hostname and hosts
-echo "martinpc"                                         >   /mnt/etc/hostname
-echo "127.0.0.1       localhost"                        >>  /mnt/etc/hosts
-echo "::1             localhost"                        >>  /mnt/etc/hosts
-echo "127.0.0.1       martinpc.localdomain    martinpc" >>  /mnt/etc/hosts
+echo "$cpthostname"                                             >   /mnt/etc/hostname
+echo "127.0.0.1       localhost"                                >>  /mnt/etc/hosts
+echo "::1             localhost"                                >>  /mnt/etc/hosts
+echo "127.0.0.1       $cpthostname.localdomain    $cpthostname" >>  /mnt/etc/hosts
 
 
 #Run the archchroot script inside arch-chroot
