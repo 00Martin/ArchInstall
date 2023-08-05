@@ -1,7 +1,6 @@
 #!/bin/sh
-#ArchInstallNvidia by MD^ (Martin)
+#ArchInstall by MD^ (Martin)
 #file: install3.sh
-#v1.0 - 04.15.2023 - latest change: initial release
 
 #We install some useful packages
 sudo pacman -Sy --noconfirm ttf-liberation git base-devel flatpak

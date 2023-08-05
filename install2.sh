@@ -1,7 +1,6 @@
 #!/bin/sh
-#ArchInstallNvidia by MD^ (Martin)
+#ArchInstall by MD^ (Martin)
 #file: install2.sh
-#v1.0 - 04.15.2023 - latest change: initial release
 
 #Some manual work is required during this script, these steps are a little more complicated then just automatically adding a line at the end of a conf file
 #For the pacman conf file, it is possible to do it by specifying the specific lines to make the changes, but it's bad practice because we risk making the script obsolete too quickly
