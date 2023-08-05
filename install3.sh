@@ -29,7 +29,7 @@ sudo localectl set-x11-keymap ch "" fr
 
 
 #We ask the user if they would like to install additionnal programs
-echo -e "\n\n\nWould you like to install additionnal programs? (You will be asked for each individually) [n/Y]"
+echo -e "\n\n\nWould you like to install additional programs? (You will be asked for each individually) [n/Y]"
 read answerPrograms
 #If we do want to install them
 if [ $answerPrograms == "Y" ]; then
