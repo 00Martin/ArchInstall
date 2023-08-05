@@ -14,7 +14,7 @@ read answer
 
 
 #If the partitions are ready, we continue
-if [ $answer == "Y" ]; then
+if [[ $answer == "Y" ]]; then
 
 #Set the keyboard as the user will have to change the root password
 loadkeys fr_CH-latin1

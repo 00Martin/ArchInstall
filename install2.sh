@@ -14,7 +14,7 @@ read answer
 
 
 #If it was done, we continue
-if [ $answer == "Y" ]; then
+if [[ $answer == "Y" ]]; then
 
 #We enable DHCP in case it wasn't enabled already
 systemctl enable --now dhcpcd
