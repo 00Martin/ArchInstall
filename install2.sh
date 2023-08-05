@@ -5,7 +5,7 @@
 
 #Some manual work is required during this script, these steps are a little more complicated then just automatically adding a line at the end of a conf file
 #For the pacman conf file, it is possible to do it by specifying the specific lines to make the changes, but it's bad practice because we risk making the script obsolete too quickly
-echo -e "\nWe want to allow the download of more diverse packages from the arch repository, to do so->\nOpen the pacman configuration file by doing: nano /etc/pacman.conf\nMake sure all 4 of the core, extra, community, multilib sources are uncommented"
+echo -e "\nWe want to allow the download of more diverse packages from the arch repository, to do so->\nOpen the pacman configuration file by doing: nano /etc/pacman.conf\nMake sure all 3 of the core, extra, multilib sources are uncommented"
 
 echo -e "\n\nThis step is a requirement otherwise we are gonna be missing on important libraries to make our graphical drivers work\n\n"
 
