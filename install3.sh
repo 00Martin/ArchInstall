@@ -33,10 +33,10 @@ echo -e "\n\n\nWould you like to install additionnal programs? (You will be aske
 read answerPrograms
 #If we do want to install them
 if [ $answerPrograms == "Y" ]; then
-#Yes I could've done this section cleaner with a loop and list but the extra work and testing was not worth the time for a few programs
-#Potential improvements to make
-# - a table containing the name and type (pacman=0, aur=1) of the package
-# - a loop that goes through each of them and asks the user, as well as an if that checks if it has to be installed with pacman or yay
+#I will make this section cleaner once the rest of the features are implemented.
+#Multidimensional arrays aren't too much of a thing in bash so I'll do the following:
+# - 1 list each for pacman and AUR packages
+# - 1 loop for each type of package, It'll go through the list and asks the user for installation.
     echo -e "\n\nWould you like to install Brave Browser? [n/Y]"
     read answerBrave
     if [ $answerBrave == "Y" ]; then
