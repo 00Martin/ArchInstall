@@ -5,6 +5,7 @@
 
 #Auto clean, we remove the previous script
 sudo rm /home/install2.sh
+sudo rm /home/install3.sh
 clear
 
 
