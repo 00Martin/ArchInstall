@@ -11,7 +11,7 @@ A little resume of what my script does:
 - For UEFI
 - Single boot (it must NOT be used for dualbooting, it will erase your disk, you are warned)
 - No swap
-- System in American English with Swiss french keyboard
+- System in American English with Swiss French keyboard
 - No browser installed, you get to install your favorite browser yourself!
 
 Choices :
