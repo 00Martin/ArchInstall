@@ -93,14 +93,14 @@ warningMsg="Make sure to input your choice properly with no extra spaces or your
 clear
 #We need to know what type of system the user has
 echo -e "\n\nWhich type of system do you use?\n\n[0] Intel(default)\n[1] Amd(not tested)\n[2] Intel + Nvidia\n[3] My system does not match/I would like to install my own drivers and libraries\n\nOnly choose the last option if you are experimented.\n"
-echo $warningMsg
+echo -e $warningMsg
 read systemType
 echo "$systemType" > /mnt/home/sysType.doNotDelete
 
 clear
 #We want to know which desktop environment the user would like to use
 echo -e "\n\nWhich desktop environment would you like to use between KDE Plasma(default) or Gnome Desktop(not tested)? [k/g]\n"
-echo $warningMsg
+echo -e $warningMsg
 read deskEnv
 echo "$deskEnv" > /mnt/home/deskEnv.doNotDelete
 
