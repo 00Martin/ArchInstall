@@ -61,14 +61,19 @@ if [[ "$deskEnv" == "g" ]]; then
     #For Nvidia graphic cards (for Xorg instead of wayland)
     if [[ "$sysType" == "2" ]]; then
 
-    echo "GNOME NVIDIA"
+    pacman -S --noconfirm gnome xorg
+    #We need to add these lines in config to use Xorg by default
+    echo "export XDG_SESSION_TYPE=x11"     >>  /home/$username/.xinitrc
+    echo "export GDK_BACKEND=x11"     >>  /home/$username/.xinitrc
+    echo "exec gnome-session"     >>  /home/$username/.xinitrc
 
     #For the rest we install the wayland version
     else
 
-    echo "GNOME"
+    pacman -S --noconfirm gnome
 
     fi
+    systemctl enable gdm.service
 
 #Otherwise we install KDE Plasma
 else
@@ -81,14 +86,15 @@ else
     #For the rest we install the wayland version
     else
 
-    echo "KDE PLASMA"
+        #We install everything needed for KDE Plasma Wayland, with a limited set of applications
+        pacman -S --noconfirm xorg plasma wayland plasma-wayland-session sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
 
     fi
+    systemctl enable sddm.service
 fi
 
 
 #We enable some services on boot for the user to have a fully working system out of the box
-systemctl enable sddm.service
 systemctl enable NetworkManager
 systemctl enable bluetooth.service
 
