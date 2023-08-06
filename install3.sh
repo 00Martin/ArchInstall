@@ -99,6 +99,9 @@ fi
 #Auto clean, we remove the scripts
 sudo rm /home/install2.sh
 sudo rm /home/install3.sh
+sudo rm /home/encrypt.doNotDelete
+sudo rm /home/sysType.doNotDelete
+sudo rm /home/deskEnv.doNotDelete
 
 
 #While not necessary, we reboot to apply the new keyboard and dns config
