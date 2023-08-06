@@ -53,18 +53,18 @@ if [[ "$sysType" == "2" ]]; then
 fi
 
 
-#Installation of the microcode based on the user's system
-sysType=`cat /home/sysType.doNotDelete`
-#if has an intel processor
-if [[ "$sysType" == "0" || "$sysType" == "2" ]]; then
-    pacman -Sy --noconfirm intel-ucode
+#Installation of the desktop environment
+deskEnv=`cat /home/deskEnv.doNotDelete`
+
+#If we install Gnome
+if [[ "$deskEnv" == "g" ]]; then
+
+
+#Otherwise we install KDE Plasma
+else
+    #We install everything needed for KDE Plasma, with a limited set of applications
+    pacman -S --noconfirm           xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
 fi
-#if has an amd processor
-if [[ "$sysType" == "1" ]]; then
-    pacman -Sy --noconfirm amd-ucode
-fi
-#We install everything needed for KDE Plasma, with a limited set of applications
-pacman -S --noconfirm           xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
 
 
 #We enable some services on boot for the user to have a fully working system out of the box
