@@ -58,12 +58,29 @@ deskEnv=`cat /home/deskEnv.doNotDelete`
 
 #If we install Gnome
 if [[ "$deskEnv" == "g" ]]; then
+    #For Nvidia graphic cards (for Xorg instead of wayland)
+    if [[ "$sysType" == "2" ]]; then
 
 
-#Otherwise we install KDE Plasma
-else
-    #We install everything needed for KDE Plasma, with a limited set of applications
-    pacman -S --noconfirm           xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
+
+    else #For the rest we install the wayland version
+
+
+
+    fi
+
+else #Otherwise we install KDE Plasma
+    #For Nvidia graphic cards (for Xorg instead of wayland)
+    if [[ "$sysType" == "2" ]]; then
+
+        #We install everything needed for KDE Plasma Xorg, with a limited set of applications
+        pacman -S --noconfirm xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
+
+    else #For the rest we install the wayland version
+
+
+
+    fi
 fi
 
 
