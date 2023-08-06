@@ -79,7 +79,7 @@ warningMsg="Make sure to input your choice properly with no extra spaces or your
 
 clear
 #We need to know what type of system the user has to install the hardware packages accordingly
-echo -e "\n\nWhich type of system do you use?\n\n[0] Intel(default)\n[1] Amd(not tested)\n[2] Intel + Nvidia\n[3] My system does not match/I would like to install my own drivers and libraries\n\nOnly choose the last option if you are experimented.\n"
+echo -e "\n\nWhich type of system do you use?\n\n[0] Intel\n[1] Amd(not tested)\n[2] Intel + Nvidia\n[3] (default) My system does not match/I would like to install my own drivers and libraries\n\nOnly choose the default option if you are experimented.\n"
 echo -e $warningMsg
 read systemType
 echo "$systemType" > /mnt/home/sysType.doNotDelete
