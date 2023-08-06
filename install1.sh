@@ -74,23 +74,6 @@ echo "::1             localhost"                                >>  /mnt/etc/hos
 echo "127.0.0.1       $cpthostname.localdomain    $cpthostname" >>  /mnt/etc/hosts
 
 
-#Run the archchroot script inside arch-chroot
-arch-chroot /mnt sh install-archchroot.sh
-
-#We delete the archchroot file after it was ran to keep the install clean
-rm /mnt/install-archchroot.sh
-
-
-#BOOTLOADER: config
-#We created the systemd bootloader files in the archchroot script, we now need to configure the bootloader
-echo "default arch"                 >>  /mnt/boot/loader/loader.conf
-touch /mnt/boot/loader/entries/arch.conf
-echo "title Arch Linux"             >   /mnt/boot/loader/entries/arch.conf
-echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
-echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
-echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
-
-
 #We prepare a warning message to make sure the user enters their choice the right way
 warningMsg="Make sure to input your choice properly with no extra spaces or your choice will be ignored and the script will use the default option.\n"
 
@@ -107,6 +90,23 @@ echo -e "\n\nWhich desktop environment would you like to use between KDE Plasma(
 echo -e $warningMsg
 read deskEnv
 echo "$deskEnv" > /mnt/home/deskEnv.doNotDelete
+
+
+#Run the archchroot script inside arch-chroot
+arch-chroot /mnt sh install-archchroot.sh
+
+#We delete the archchroot file after it was ran to keep the install clean
+rm /mnt/install-archchroot.sh
+
+
+#BOOTLOADER: config
+#We created the systemd bootloader files in the archchroot script, we now need to configure the bootloader
+echo "default arch"                 >>  /mnt/boot/loader/loader.conf
+touch /mnt/boot/loader/entries/arch.conf
+echo "title Arch Linux"             >   /mnt/boot/loader/entries/arch.conf
+echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
+echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
+echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
 
 
 #Rebooting into our newly installed arch system, the user will have to run the next script which was put into the home folder
