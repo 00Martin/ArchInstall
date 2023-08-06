@@ -86,14 +86,16 @@ echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
 
-
+warning = "Make sure to input your choice properly with no extra spaces or your choice will be ignored and the script will use the default option.\n"
 #We need to know what type of system the user has
 echo -e "\n\nWhich type of system do you use?\n\n[0] Intel(default)\n[1] Amd(not tested)\n[2] Intel + Nvidia\n[3] My system does not match/I would like to install my own drivers and libraries\n\nOnly choose the last option if you are experimented.\n"
+echo $warning
 read systemType
 echo "$systemType" > /mnt/home/sysType.doNotDelete
 
 #We want to know which desktop environment the user would like to use
 echo -e "\n\nWhich desktop environment would you like to use between KDE Plasma(default) or Gnome Desktop(not tested)? [k/g]\n"
+echo $warning
 read deskEnv
 echo "$deskEnv" > /mnt/home/deskEnv.doNotDelete
 
