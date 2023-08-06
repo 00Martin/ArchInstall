@@ -24,7 +24,7 @@ cd ..
 rm -rf yay
 
 
-#Because the default keyboard is English USA, we change it to Swiss French
+#Because the default keyboard is reset to English USA, we change it to Swiss French
 sudo localectl set-x11-keymap ch "" fr
 
 
@@ -33,51 +33,30 @@ echo -e "\n\n\nWould you like to install additional programs? (You will be asked
 read answerPrograms
 #If we do want to install them
 if [[ $answerPrograms == "Y" ]]; then
-#I will make this section cleaner once the rest of the features are implemented.
-#Multidimensional arrays aren't too much of a thing in bash so I'll do the following:
-# - 1 list each for pacman and AUR packages
-# - 1 loop for each type of package, It'll go through the list and asks the user for installation.
-    echo -e "\nWould you like to install Brave Browser? [n/Y]"
-    read answerBrave
-    if [[ $answerBrave == "Y" ]]; then
-    yay -Sy --noconfirm brave-bin
-    fi
 
-    echo -e "\nWould you like to install Firefox? [n/Y]"
-    read answerFirefox
-    if [[ $answerFirefox == "Y" ]]; then
-    sudo pacman -Sy --noconfirm firefox
-    fi
+    #Lists containing the name of packages to potentially install
+    pacmanPackages=("firefox" "discord" "vlc")
+    aurPackages=("brave-bin" "spotify" "minecraft-launcher" "fastfetch")
 
-    echo -e "\nWould you like to install Discord? [n/Y]"
-    read answerDiscord
-    if [[ $answerDiscord == "Y" ]]; then
-    sudo pacman -Sy --noconfirm discord
-    fi
+    #Loops with the packages to install
+    for i in "${pacmanPackages[@]}"
+    do
+        echo -e "\nWould you like to install the Arch package: $i? [n/Y]"
+        read answerPkg
+        if [[ $answerPkg == "Y" ]]; then
+            sudo pacman -Sy --noconfirm $i
+        fi
+    done
 
-    echo -e "\nWould you like to install Spotify? [n/Y]"
-    read answerSpotify
-    if [[ $answerSpotify == "Y" ]]; then
-    yay -Sy --noconfirm spotify
-    fi
+    for i in "${aurPackages[@]}"
+    do
+        echo -e "\nWould you like to install the AUR package: $i? [n/Y]"
+        read answerPkg
+        if [[ $answerPkg == "Y" ]]; then
+            yay -Sy --noconfirm $i
+        fi
+    done
 
-    echo -e "\nWould you like to install Minecraft? [n/Y]"
-    read answerMinecraft
-    if [[ $answerMinecraft == "Y" ]]; then
-    yay -Sy --noconfirm minecraft-launcher
-    fi
-
-    echo -e "\nWould you like to install Fastfetch? [n/Y]"
-    read answerFastfetch
-    if [[ $answerFastfetch == "Y" ]]; then
-    yay -Sy --noconfirm fastfetch
-    fi
-
-    echo -e "\nWould you like to install Vlc? [n/Y]"
-    read answerVlc
-    if [[ $answerVlc == "Y" ]]; then
-    sudo pacman -Sy --noconfirm vlc
-    fi
 fi
 
 
