@@ -20,7 +20,7 @@ bootctl --path=/boot install
 #Installation of some packages that will be useful on the next boot
 pacman -Sy --noconfirm dhcpcd ifplugd ntfs-3g networkmanager bluez pipewire-pulse
 
-clear #Left for easier debugging
+clear
 #Installation of the microcode based on the user's system
 sysType=`cat /home/sysType.doNotDelete`
 #if has an intel processor

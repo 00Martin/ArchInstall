@@ -63,20 +63,23 @@ if [[ "$deskEnv" == "g" ]]; then
 
 
 
-    else #For the rest we install the wayland version
+    #For the rest we install the wayland version
+    else
 
 
 
     fi
 
-else #Otherwise we install KDE Plasma
+#Otherwise we install KDE Plasma
+else
     #For Nvidia graphic cards (for Xorg instead of wayland)
     if [[ "$sysType" == "2" ]]; then
 
         #We install everything needed for KDE Plasma Xorg, with a limited set of applications
         pacman -S --noconfirm xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
 
-    else #For the rest we install the wayland version
+    #For the rest we install the wayland version
+    else
 
 
 
