@@ -23,6 +23,9 @@ loadkeys fr_CH-latin1
 timedatectl set-ntp true
 
 
+#We prepare the script for future encryption implementation
+doWeEncrypt="n"
+
 #Set disk filesystem for boot and system
 mkfs.fat    -F32                /dev/sda1
 mkfs.btrfs  -L ArchSystem       /dev/sda2
@@ -47,6 +50,7 @@ curl -LO raw.githubusercontent.com/00Martin/ArchInstall/testing/install3.sh
 #We move the scripts to the home folder so it is saved and ready to use on the next reboot
 mv install2.sh /mnt/home
 mv install3.sh /mnt/home
+echo "$doWeEncrypt" > /mnt/home/encrypt.doNotDelete
 #We move the archchroot script inside root so we can run it with the arch chroot command
 mv install-archchroot.sh /mnt
 
@@ -87,11 +91,11 @@ echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
 
 
-#We create a warning message to make sure the user enters their choice the right way
+#We prepare a warning message to make sure the user enters their choice the right way
 warningMsg="Make sure to input your choice properly with no extra spaces or your choice will be ignored and the script will use the default option.\n"
 
 clear
-#We need to know what type of system the user has
+#We need to know what type of system the user has to install the hardware packages accordingly
 echo -e "\n\nWhich type of system do you use?\n\n[0] Intel(default)\n[1] Amd(not tested)\n[2] Intel + Nvidia\n[3] My system does not match/I would like to install my own drivers and libraries\n\nOnly choose the last option if you are experimented.\n"
 echo -e $warningMsg
 read systemType
