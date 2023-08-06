@@ -32,9 +32,37 @@ passwd      $username
 pacman -Syu
 pacman -S --noconfirm           sudo
 
-#We install the nvidia drivers for a standard kernel release and some basic libraries (the rest will be downloaded with the --needed parameter)
-pacman -S --noconfirm --needed  nvidia lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 
+#Installation of graphic driver and libraries
+sysType=`cat /home/sysType.doNotDelete`
+
+#For Intel (integrated) graphic cards
+if [[ "$sysType" == "0" ]]; then
+    pacman -S --noconfirm --needed lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader
+fi
+
+#For AMD graphic cards
+if [[ "$sysType" == "1" ]]; then
+    pacman -S --noconfirm --needed lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+fi
+
+#For Nvidia graphic cards
+if [[ "$sysType" == "2" ]]; then
+    #We install the nvidia drivers for a standard kernel release and some basic libraries (the rest will be downloaded with the --needed parameter)
+    pacman -S --noconfirm --needed  nvidia lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+fi
+
+
+#Installation of the microcode based on the user's system
+sysType=`cat /home/sysType.doNotDelete`
+#if has an intel processor
+if [[ "$sysType" == "0" || "$sysType" == "2" ]]; then
+    pacman -Sy --noconfirm intel-ucode
+fi
+#if has an amd processor
+if [[ "$sysType" == "1" ]]; then
+    pacman -Sy --noconfirm amd-ucode
+fi
 #We install everything needed for KDE Plasma, with a limited set of applications
 pacman -S --noconfirm           xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
 
