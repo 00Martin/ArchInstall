@@ -61,12 +61,12 @@ if [[ "$deskEnv" == "g" ]]; then
     #For Nvidia graphic cards (for Xorg instead of wayland)
     if [[ "$sysType" == "2" ]]; then
 
-
+    echo "GNOME NVIDIA"
 
     #For the rest we install the wayland version
     else
 
-
+    echo "GNOME"
 
     fi
 
@@ -81,7 +81,7 @@ else
     #For the rest we install the wayland version
     else
 
-
+    echo "KDE PLASMA"
 
     fi
 fi
