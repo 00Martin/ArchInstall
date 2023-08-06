@@ -63,9 +63,9 @@ if [[ "$deskEnv" == "g" ]]; then
 
     pacman -S --noconfirm gnome xorg
     #We need to add these lines in config to use Xorg by default
-    echo "export XDG_SESSION_TYPE=x11"     >>  /home/$username/.xinitrc
-    echo "export GDK_BACKEND=x11"     >>  /home/$username/.xinitrc
-    echo "exec gnome-session"     >>  /home/$username/.xinitrc
+    echo "export XDG_SESSION_TYPE=x11"  >>  ~/.xinitrc
+    echo "export GDK_BACKEND=x11"       >>  ~/.xinitrc
+    echo "exec gnome-session"           >>  ~/.xinitrc
 
     #For the rest we install the wayland version
     else
