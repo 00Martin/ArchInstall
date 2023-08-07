@@ -24,11 +24,11 @@ timedatectl set-ntp true
 
 
 #We ask the user if they would like encryption
-echo -e "\n\nWould you like to encrypt your drive? This may protect your data against theft but will make them unrecoverable in case of hardware failure (and potentially in case of software failure as well) [n/Y]"
-read answer
+echo -e "\n\nWould you like to encrypt your drive? This may protect your data against theft but will make it unrecoverable in case of hardware failure (and potentially in case of software failure as well).\nMAKE SURE TO KEEP YOUR BACKUPS -> UP TO DATE <- IF YOU ENABLE ENCRYPTION!!! [n/Y]"
+read answerEncrypt
 
 #If the partitions are ready, we continue
-if [[ $answer == "Y" ]]; then
+if [[ $answerEncrypt == "Y" ]]; then
 
     #Encryption
     doWeEncrypt="1"
@@ -123,6 +123,7 @@ arch-chroot /mnt sh install-archchroot.sh
 rm /mnt/install-archchroot.sh
 
 
+if [[ $doWeEncrypt == "0" ]]; then
 #BOOTLOADER: config
 #We created the systemd bootloader files in the archchroot script, we now need to configure the bootloader
 echo "default arch"                 >>  /mnt/boot/loader/loader.conf
@@ -131,6 +132,7 @@ echo "title Arch Linux"             >   /mnt/boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
+fi
 
 
 #Rebooting into our newly installed arch system, the user will have to run the next script which was put into the home folder
