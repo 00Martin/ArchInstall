@@ -24,7 +24,7 @@ timedatectl set-ntp true
 
 
 #We ask the user if they would like encryption
-echo "Would you like to encrypt your drive? This may protect your data against theft but will make them unrecoverable in case of hardware failure (and potentially in case of software failure as well) [n/Y]"
+echo -e "\n\nWould you like to encrypt your drive? This may protect your data against theft but will make them unrecoverable in case of hardware failure (and potentially in case of software failure as well) [n/Y]"
 read answer
 
 #If the partitions are ready, we continue
@@ -134,7 +134,7 @@ echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
 
 
 #Rebooting into our newly installed arch system, the user will have to run the next script which was put into the home folder
-reboot
+#reboot
 
 
 #If partitions were not ready, we stop
