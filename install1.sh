@@ -12,9 +12,9 @@ echo -e "It is very important to properly precise the type of the partition or i
 echo "Have you done this ? [n/Y]"
 read answer
 
-
 #If the partitions are ready, we continue
 if [[ $answer == "Y" ]]; then
+
 
 #Set the keyboard as the user will have to change the root password
 loadkeys fr_CH-latin1
@@ -23,16 +23,40 @@ loadkeys fr_CH-latin1
 timedatectl set-ntp true
 
 
-#We prepare the script for future encryption implementation
-doWeEncrypt="n"
+#We ask the user if they would like encryption
+echo "Would you like to encrypt your drive? This may protect your data against theft but will make them unrecoverable in case of hardware failure (and potentially in case of software failure as well) [n/Y]"
+read answer
 
-#Set disk filesystem for boot and system
-mkfs.fat    -F32                /dev/sda1
-mkfs.btrfs  -L ArchSystem       /dev/sda2
+#If the partitions are ready, we continue
+if [[ $answer == "Y" ]]; then
 
-#we mount these partitions
-mount /dev/sda2 /mnt
-mkdir           /mnt/boot
+    #Encryption
+    doWeEncrypt="1"
+
+    #Set up of LUKS partition
+    cryptsetup -y -v luksFormat /dev/sda2
+    cryptsetup open /dev/sda2 root
+    mkfs.ext4 /dev/mapper/root
+
+    #We mount root in the case of the encrypted volume
+    mount /dev/mapper/root /mnt
+
+else
+
+    #No encryption
+    doWeEncrypt="0"
+
+    #Set disk filesystem for system
+    mkfs.btrfs -L ArchSystem /dev/sda2
+
+    #We mount root in the case of the non encrypted volume
+    mount /dev/sda2 /mnt
+
+fi
+
+#We setup boot which we do the same way regarless of encryption
+mkfs.fat -F32 /dev/sda1
+mkdir /mnt/boot
 mount /dev/sda1 /mnt/boot
 
 #Getting Linux installed
