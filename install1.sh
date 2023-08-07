@@ -123,7 +123,6 @@ arch-chroot /mnt sh install-archchroot.sh
 rm /mnt/install-archchroot.sh
 
 
-#if [[ $doWeEncrypt == "0" ]]; then
 #BOOTLOADER: config
 #We created the systemd bootloader files in the archchroot script, we now need to configure the bootloader
 echo "default arch"                 >>  /mnt/boot/loader/loader.conf
@@ -131,12 +130,18 @@ touch /mnt/boot/loader/entries/arch.conf
 echo "title Arch Linux"             >   /mnt/boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
 echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
-echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
-#fi
 
+if [[ $doWeEncrypt == "1" ]]; then
+    #If we are encrypted, we need to add LUKS specific options
+    encryptedUUID=blkid -s UUID -o value /dev/sda2
+    echo "options rd.luks.name=$encryptedUUID=root root=/dev/mapper/root"    >>  /mnt/boot/loader/entries/arch.conf
 
-#Rebooting into our newly installed arch system, the user will have to run the next script which was put into the home folder
-#reboot
+    #We regenerate the initramfs
+    arch-chroot /mnt mkinitcpio -p linux
+else
+    #Otherwise we just use normal systemd boot options
+    echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
+fi
 
 
 #If partitions were not ready, we stop
