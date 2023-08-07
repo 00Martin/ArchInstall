@@ -1,5 +1,5 @@
 #!/bin/sh
-#ArchInstall by MD^ (Martin)
+#ArchInstall by 00Martin - https://github.com/00Martin
 #file: install-archchroot.sh
 
 #Set time zone to Switzerland

@@ -1,5 +1,5 @@
 #!/bin/sh
-#ArchInstall by MD^ (Martin)
+#ArchInstall by 00Martin - https://github.com/00Martin
 #file: install2.sh
 
 #Some manual work is required during this script, these steps are a little more complicated then just automatically adding a line at the end of a conf file
@@ -33,20 +33,20 @@ pacman -Syu
 pacman -S --noconfirm           sudo
 
 
-#Installation of graphic driver and libraries
+#Installation of graphics driver and libraries
 sysType=`cat /home/sysType.doNotDelete`
 
-#For Intel (integrated) graphic cards
+#For Intel (integrated) graphics cards
 if [[ "$sysType" == "0" ]]; then
     pacman -S --noconfirm --needed lib32-mesa vulkan-intel lib32-vulkan-intel vulkan-icd-loader lib32-vulkan-icd-loader
 fi
 
-#For AMD graphic cards
+#For AMD graphics cards
 if [[ "$sysType" == "1" ]]; then
     pacman -S --noconfirm --needed lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 fi
 
-#For Nvidia graphic cards
+#For Nvidia graphics cards
 if [[ "$sysType" == "2" ]]; then
     #We install the nvidia drivers for a standard kernel release and some basic libraries (the rest will be downloaded with the --needed parameter)
     pacman -S --noconfirm --needed  nvidia lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
@@ -61,14 +61,16 @@ if [[ "$deskEnv" == "g" ]]; then
     #For Nvidia graphic cards (for Xorg instead of wayland)
     if [[ "$sysType" == "2" ]]; then
 
+    #By default, Gnome uses wayland, but we want to give the possibility of an easy switch in case wayland has issues
     pacman -S --noconfirm gnome xorg
 
-    #For the rest we install the wayland version
+    #For other hardware, we just install the wayland version
     else
 
     pacman -S --noconfirm gnome
 
     fi
+    #We enable the Gnome service so it starts on boot
     systemctl enable gdm.service
 
 #Otherwise we install KDE Plasma
@@ -86,11 +88,12 @@ else
         pacman -S --noconfirm xorg plasma wayland plasma-wayland-session sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
 
     fi
+    #We enable the Sddm service so KDE Plasma starts on boot
     systemctl enable sddm.service
 fi
 
 
-#We enable some services on boot for the user to have a fully working system out of the box
+#We enable some services on boot for the user to have a fully working system on the next boot
 systemctl enable NetworkManager
 systemctl enable bluetooth.service
 
