@@ -133,7 +133,7 @@ echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 
 if [[ $doWeEncrypt == "1" ]]; then
     #If we are encrypted, we need to add LUKS specific options
-    encryptedUUID=blkid -s UUID -o value /dev/sda2
+    encryptedUUID=$(blkid -s UUID -o value /dev/sda2)
     echo "options rd.luks.name=$encryptedUUID=root root=/dev/mapper/root"    >>  /mnt/boot/loader/entries/arch.conf
 
     #We regenerate the initramfs
