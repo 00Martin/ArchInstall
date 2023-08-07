@@ -147,7 +147,6 @@ if [[ $doWeEncrypt == "1" ]]; then
     echo -e "\nHOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block sd-encrypt filesystems fsck)"
     echo -e "\nOnce done, save and exit."
     echo -e "\n\nWe now need to regenerate the initramfs, to do this you just need to execute the following command: arch-chroot /mnt mkinitcpio -p linux"
-    echo -e "\nOnce done, exit arch-chroot with the command: exit"
     echo -e "\nYou can now reboot your machine with the command: reboot"
     echo -e "\n\nIf on reboot you are not asked for the password of your encrypted partition, then something went wrong, I recommended you to start again."
 
