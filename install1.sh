@@ -154,6 +154,7 @@ else
     #If not encrypted, we use normal systemd boot options
     echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
 
+    reboot
 fi
 
 
