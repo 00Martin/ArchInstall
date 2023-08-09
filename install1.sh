@@ -6,7 +6,10 @@
 #We assume the user knows how partitions work, and will create them properly as described
 echo -e "\nCreate your partitions first with -> cfdisk /dev/sda\n\nYour partitions must look like this:"
 echo -e "sda1 - boot efi, 2GB recommended to allow multiple kernels TYPE: EFI System\nsda2 - system, can fill up the rest of the disk TYPE: Linux root (x86-64)\n"
-echo -e "It is very important to properly precise the type of the partition or it might create errors when formatting with a filesystem\n\n"
+echo -e "If you have a NVMe drive, your drive will likely be called nvme0n1 instead of sda, change the cfdisk command accordingly.\n"
+echo -e "If your main drive is a NVMe, a sda drive will probably still exist, it'll be either a second SATA drive, or your Arch Linux usb key.\n"
+echo -e "If you are unsure about which device is your drive, you can use the lsblk command, you can then guess which drive is your main one based on it's size\n"
+echo -e "It is very important to properly precise the type of the partition or it might create errors when formatting the drive with a new filesystem\n\n"
 
 #We ask the user if the partitions are created
 echo "Have you done this ? [n/Y]"
@@ -23,6 +26,21 @@ loadkeys fr_CH-latin1
 timedatectl set-ntp true
 
 
+#We ask the user if they have a NVMe, because drive names are different
+echo "Do you use a NVMe? [n/Y]"
+read answerNVMe
+
+if [[ $answerNVMe == "Y" ]]; then
+	driveName="nvme0n1"
+	partitionNameBoot="nvme0n1p1"
+	partitionNameRoot="nvme0n1p2"
+else
+	driveName="sda"
+	partitionNameBoot="sda1"
+	partitionNameRoot="sda2"
+fi
+
+
 #We ask the user if they would like encryption
 echo -e "\n\nWould you like to encrypt your drive? This may protect your data in case of physical theft of your device but will make it unrecoverable in case of hardware failure (and potentially in case of software failure as well).\nMAKE SURE TO KEEP YOUR BACKUPS -> UP TO DATE <- IF YOU ENABLE ENCRYPTION!!! [n/Y]"
 read answerEncrypt
@@ -34,8 +52,8 @@ if [[ $answerEncrypt == "Y" ]]; then
     doWeEncrypt="1"
 
     #Set up of LUKS partition
-    cryptsetup -y -v luksFormat /dev/sda2
-    cryptsetup open /dev/sda2 root
+    cryptsetup -y -v luksFormat /dev/$partitionNameRoot
+    cryptsetup open /dev/$partitionNameRoot root
     mkfs.ext4 /dev/mapper/root
 
     #We mount root in the case of the encrypted volume
@@ -47,17 +65,17 @@ else
     doWeEncrypt="0"
 
     #Set disk filesystem for system
-    mkfs.btrfs -L archSystem /dev/sda2
+    mkfs.btrfs -L archSystem /dev/$partitionNameRoot
 
     #We mount root in the case of the non encrypted volume
-    mount /dev/sda2 /mnt
+    mount /dev/$partitionNameRoot /mnt
 
 fi
 
 #We setup boot which we do the same way regarless of encryption
-mkfs.fat -F32 /dev/sda1
+mkfs.fat -F32 /dev/$partitionNameBoot
 mkdir /mnt/boot
-mount /dev/sda1 /mnt/boot
+mount /dev/$partitionNameBoot /mnt/boot
 
 #Getting Linux installed
 pacstrap /mnt base linux linux-firmware nano
@@ -135,7 +153,7 @@ echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 
 if [[ $doWeEncrypt == "1" ]]; then
     #If we are encrypted, we need to add LUKS specific options
-    encryptedUUID=$(blkid -s UUID -o value /dev/sda2)
+    encryptedUUID=$(blkid -s UUID -o value /dev/$partitionNameRoot)
     echo "options rd.luks.name=$encryptedUUID=root root=/dev/mapper/root"    >>  /mnt/boot/loader/entries/arch.conf
 
     #There's some work the user needs to do, we give them the instructions
@@ -152,7 +170,7 @@ if [[ $doWeEncrypt == "1" ]]; then
 
 else
     #If not encrypted, we use normal systemd boot options
-    echo "options root=/dev/sda2 rw"    >>  /mnt/boot/loader/entries/arch.conf
+    echo "options root=/dev/$partitionNameRoot rw"    >>  /mnt/boot/loader/entries/arch.conf
 
     reboot
 fi
