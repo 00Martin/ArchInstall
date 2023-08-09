@@ -42,7 +42,7 @@ fi
 
 
 #We ask the user if they would like encryption
-echo -e "\n\nWould you like to encrypt your drive? This may protect your data in case of physical theft of your device but will make it unrecoverable in case of hardware failure (and potentially in case of software failure as well).\nMAKE SURE TO KEEP YOUR BACKUPS -> UP TO DATE <- IF YOU ENABLE ENCRYPTION!!! [n/Y]"
+echo -e "\n\nWould you like to encrypt your drive? This may protect your data in case of physical theft of your device but will make your data unrecoverable in case of hardware failure (and potentially in case of software failure as well).\nMAKE SURE TO KEEP YOUR BACKUPS -> UP TO DATE <- IF YOU ENABLE ENCRYPTION!!! [n/Y]"
 read answerEncrypt
 
 #If the user wants encryption, some things will be done differently
