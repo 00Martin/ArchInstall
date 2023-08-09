@@ -6,16 +6,17 @@
 #We assume the user knows how partitions work, and will create them properly as described
 echo -e "\nCreate your partitions first with -> cfdisk /dev/sda\n\nYour partitions must look like this:"
 echo -e "sda1 - boot efi, 2GB recommended to allow multiple kernels TYPE: EFI System\nsda2 - system, can fill up the rest of the disk TYPE: Linux root (x86-64)\n"
+echo -e "It is very important to properly precise the type of the partition or it might create errors when formatting the drive with a new filesystem.\n"
 echo -e "If you have a NVMe drive, your drive will likely be called nvme0n1 instead of sda, change the cfdisk command accordingly.\n"
 echo -e "If your main drive is a NVMe, a sda drive will still exist, it'll likely be your Arch Linux USB. Having a sda drive does NOT necessarily mean it is the right drive to install Arch on!!\n"
-echo -e "If you are unsure about which device is your drive, you can use the lsblk command, you can then guess which drive is your main one based on it's size.\n"
-echo -e "It is very important to properly precise the type of the partition or it might create errors when formatting the drive with a new filesystem.\n\n"
+echo -e "If you are unsure about which device is your drive, you can use the lsblk command, you can then guess which drive is your main one based on it's size.\n\n"
+echo -e "!!!MAKE SURE TO DISCONNECT ANY OTHER DRIVE THAT COULD POSSIBLY HAVE DATA ON IT AND THAT SHOULD ---> NOT <--- BE ERASED!!!\n\n"
 
-#We ask the user if the partitions are created
-echo "Have you done this ? [n/Y]"
+#We ask the user if the partitions are created and the other devices disconnected
+echo "Have you created the partitions AND disconnected every other drive that should NOT be erased? [n/Y]"
 read answer
 
-#If the partitions are ready, we continue
+#If the partitions are ready and the drives are safe, we continue
 if [[ $answer == "Y" ]]; then
 
 
