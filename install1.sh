@@ -20,11 +20,13 @@ read answer
 if [[ $answer == "Y" ]]; then
 
 
+#For time synchronization
+timedatectl set-ntp true
+
 #Set the keyboard as the user will have to change the root password
 loadkeys fr_CH-latin1
 
-#For time synchronization
-timedatectl set-ntp true
+echo -e "\nYour keyboard switched to Swiss French."
 
 
 #We ask the user if they have a NVMe, because drive names are different
