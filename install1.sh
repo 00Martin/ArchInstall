@@ -7,7 +7,7 @@
 echo -e "\nCreate your partitions first with -> cfdisk /dev/sda\n\nYour partitions must look like this:"
 echo -e "sda1 - boot efi, 2GB recommended to allow multiple kernels TYPE: EFI System\nsda2 - system, can fill up the rest of the disk TYPE: Linux root (x86-64)\n"
 echo -e "If you have a NVMe drive, your drive will likely be called nvme0n1 instead of sda, change the cfdisk command accordingly.\n"
-echo -e "If your main drive is a NVMe, a sda drive will probably still exist, it'll be either a second SATA drive, or your Arch Linux usb key.\n"
+echo -e "If your main drive is a NVMe, a sda drive will still exist, it'll likely be your Arch Linux USB. Having a sda drive does NOT necessarily mean it is the right drive to install Arch on!!\n"
 echo -e "If you are unsure about which device is your drive, you can use the lsblk command, you can then guess which drive is your main one based on it's size\n"
 echo -e "It is very important to properly precise the type of the partition or it might create errors when formatting the drive with a new filesystem\n\n"
 
