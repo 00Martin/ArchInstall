@@ -3,7 +3,7 @@
 #file: install3.sh
 
 #We install some packages useful in any type of Arch install
-sudo pacman -Sy --noconfirm ttf-liberation git base-devel flatpak
+sudo pacman -Sy --noconfirm ttf-liberation git base-devel flatpak noto-fonts
 
 #We ask the user if they would like to install some gaming packages
 echo -e "\n\n\nWould you like to install the following gaming packages? (Steam, Lutris) [n/Y]"
