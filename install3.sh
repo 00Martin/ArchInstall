@@ -40,7 +40,7 @@ if [[ $answerPrograms == "Y" ]]; then
 
     #Lists containing the name of packages to potentially install
     pacmanPackages=("firefox" "discord" "vlc" "ufw")
-    aurPackages=("brave-bin" "spotify" "minecraft-launcher" "fastfetch")
+    aurPackages=("brave-bin" "spotify" "minecraft-launcher" "fastfetch" "protonvpn-cli")
 
     #Loops with the packages to install
     for i in "${pacmanPackages[@]}"
