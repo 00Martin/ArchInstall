@@ -5,19 +5,6 @@
 #We install some packages useful in any type of Arch install
 sudo pacman -Sy --noconfirm ttf-liberation git base-devel flatpak noto-fonts
 
-#We ask the user if they would like to install some gaming packages
-echo -e "\n\n\nWould you like to install the following gaming packages? (Steam, Lutris) [n/Y]"
-read answerGaming
-
-#If we do want to install them
-if [[ $answerGaming == "Y" ]]; then
-
-#We install the gaming packages
-#We replace wine with wine-staging because the stable release is slow to implement major updates
-sudo pacman -Sy --noconfirm steam wine-staging lutris
-
-fi
-
 
 #Installation of Yay (AUR Helper)
 cd ~/Documents/
@@ -26,6 +13,21 @@ cd yay/
 makepkg -si --noconfirm
 cd ..
 rm -rf yay
+
+
+#We ask the user if they would like to install some gaming packages
+echo -e "\n\n\nWould you like to install the following gaming packages? (Steam, Lutris, Heroic Launcher) [n/Y]"
+read answerGaming
+
+#If we do want to install them
+if [[ $answerGaming == "Y" ]]; then
+
+#We install the gaming packages
+#We replace wine with wine-staging because the stable release is slow to implement major updates
+sudo pacman -Sy --noconfirm steam wine-staging lutris
+yay -Sy --noconfirm heroic-games-launcher-bin
+
+fi
 
 
 #Because the default keyboard is reset to English USA, we change it to Swiss French
