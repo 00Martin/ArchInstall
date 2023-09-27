@@ -43,6 +43,7 @@ if [[ $answerPrograms == "Y" ]]; then
     #Lists containing the name of packages to potentially install
     pacmanPackages=("firefox" "discord" "vlc" "ufw" "chromium" "signal-desktop")
     aurPackages=("brave-bin" "spotify" "minecraft-launcher" "fastfetch" "protonvpn-cli")
+    flatpakPackages=("skype")
 
     #Loops with the packages to install
     for i in "${pacmanPackages[@]}"
@@ -60,6 +61,15 @@ if [[ $answerPrograms == "Y" ]]; then
         read answerPkg
         if [[ $answerPkg == "Y" ]]; then
             yay -Sy --noconfirm $i
+        fi
+    done
+
+    for i in "${flatpakPackages[@]}"
+    do
+        echo -e "\nWould you like to install the Flatpak package: $i? [n/Y]"
+        read answerPkg
+        if [[ $answerPkg == "Y" ]]; then
+            flatpak install $i
         fi
     done
 
