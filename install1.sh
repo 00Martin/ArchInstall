@@ -165,7 +165,7 @@ if [[ $doWeEncrypt == "1" ]]; then
     echo -e "\n\nFirst, we need to edit the HOOKS of the mkinitcpio.conf file."
     echo -e "\nTo do this, execute the following command:  nano /mnt/etc/mkinitcpio.conf"
     echo -e "\nFind the HOOKS=... line that does not have a # in front of it and edit it. It must look EXACTLY like the following example:"
-    echo -e "\nHOOKS=(base systemd autodetect modconf kms keyboard sd-vconsole block sd-encrypt filesystems fsck)"
+    echo -e "\nHOOKS=(base systemd keyboard autodetect modconf kms sd-vconsole block sd-encrypt filesystems fsck)"
     echo -e "\nOnce done, save and exit."
     echo -e "\n\nWe now need to regenerate the initramfs, to do this you just need to execute the following command: arch-chroot /mnt mkinitcpio -p linux"
     echo -e "\n\nOptionally, you might want to restrict access to the boot partition when the OS is running."
