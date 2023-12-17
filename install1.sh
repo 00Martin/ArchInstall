@@ -55,7 +55,7 @@ if [[ $answerEncrypt == "Y" ]]; then
     doWeEncrypt="1"
 
     #Set up of LUKS partition
-    cryptsetup -y -v luksFormat /dev/$partitionNameRoot
+    cryptsetup luksFormat /dev/$partitionNameRoot
     cryptsetup open /dev/$partitionNameRoot root
     mkfs.ext4 /dev/mapper/root
 
