@@ -79,13 +79,13 @@ else
     if [[ "$sysType" == "2" ]]; then
 
         #We install everything needed for KDE Plasma Xorg, with a limited set of applications
-        pacman -S --noconfirm xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
+        pacman -S --noconfirm xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent merkuro kcalc elisa
 
     #For the rest we install the wayland version
     else
 
         #We install everything needed for KDE Plasma Wayland, with a limited set of applications
-        pacman -S --noconfirm xorg plasma wayland plasma-wayland-session sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent kalendar kcalc elisa
+        pacman -S --noconfirm xorg plasma wayland plasma-wayland-session sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent merkuro kcalc elisa
 
     fi
     #We enable the Sddm service so KDE Plasma starts on boot
