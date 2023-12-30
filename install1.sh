@@ -171,7 +171,7 @@ if [[ $doWeEncrypt == "1" ]]; then
     echo -e "\n\nOptionally, you might want to restrict access to the boot partition when the OS is running."
     echo -e "To do so, use the following command: nano /mnt/etc/fstab   and replace the 22 values of fmask and dmask to 77, don't remove the 0s."
     echo -e "\nYou can now reboot your machine with the command: reboot"
-    echo -e "\n\nIf on reboot you are not asked for the password of your encrypted partition, then something went wrong, I recommended you to start again."
+    echo -e "\n\nIf on reboot you are not asked for the password of your encrypted partition, then something went wrong, I recommended you to start the installation over again."
 
 else
     #If not encrypted, we use normal systemd boot options
