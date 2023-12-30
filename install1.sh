@@ -121,10 +121,6 @@ echo "::1             localhost"                                >>  /mnt/etc/hos
 echo "127.0.0.1       $cpthostname.localdomain    $cpthostname" >>  /mnt/etc/hosts
 
 
-#We create a file to restrict login on ssh using root
-echo "PermitRootLogin no"    >>  /mnt/etc/ssh/sshd_config.d/20-deny_root.conf
-
-
 #We prepare a warning message to make sure the user enters their choice the right way
 warningMsg="Make sure to input your choice properly with no extra spaces or your choice will be ignored and the script will use the default option.\n"
 
