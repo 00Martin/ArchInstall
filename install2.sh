@@ -17,7 +17,7 @@ read answer
 if [[ $answer == "Y" ]]; then
 
 #We enable DHCP in case it wasn't enabled already
-systemctl enable --now dhcpcd
+systemctl enable --now NetworkManager
 
 
 #We ask the user to enter a username
@@ -94,7 +94,6 @@ fi
 
 
 #We enable some services on boot for the user to have a fully working system on the next boot
-systemctl enable NetworkManager
 systemctl enable bluetooth.service
 
 
