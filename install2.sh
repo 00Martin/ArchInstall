@@ -102,6 +102,10 @@ systemctl enable --now ufw
 ufw enable
 
 
+#We create a file to restrict login on ssh using root
+echo "PermitRootLogin no"    >>  /mnt/etc/ssh/sshd_config.d/20-deny_root.conf
+
+
 #We enable some services on boot for the user to have a fully working system on the next boot
 systemctl enable bluetooth.service
 
