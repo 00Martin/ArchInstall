@@ -121,6 +121,10 @@ echo "::1             localhost"                                >>  /mnt/etc/hos
 echo "127.0.0.1       $cpthostname.localdomain    $cpthostname" >>  /mnt/etc/hosts
 
 
+#We create a file to restrict login on ssh using root
+echo "PermitRootLogin no"    >>  /mnt/etc/ssh/sshd_config.d/20-deny_root.conf
+
+
 #We prepare a warning message to make sure the user enters their choice the right way
 warningMsg="Make sure to input your choice properly with no extra spaces or your choice will be ignored and the script will use the default option.\n"
 
@@ -174,7 +178,6 @@ else
     #If not encrypted, we use normal systemd boot options
     echo "options root=/dev/$partitionNameRoot rw"    >>  /mnt/boot/loader/entries/arch.conf
 fi
-
 
     echo -e "\n\nOptionally, you might want to restrict access to the boot partition when the OS is running."
     echo -e "To do so, use the following command: nano /mnt/etc/fstab   and replace the 22 values of fmask and dmask to 77, don't remove the 0s."
