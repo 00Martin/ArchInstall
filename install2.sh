@@ -16,6 +16,7 @@ read answer
 #If it was done, we continue
 if [[ $answer == "Y" ]]; then
 
+
 #We enable networking
 systemctl enable --now NetworkManager
 
@@ -91,6 +92,14 @@ else
     #We enable the Sddm service so KDE Plasma starts on boot
     systemctl enable sddm.service
 fi
+
+
+#We install ufw as a firewall
+pacman -S --noconfirm ufw
+#Based on the arch wiki, iptables has to be deactivated before enabling ufw (https://wiki.archlinux.org/title/Uncomplicated_Firewall)
+systemctl disable --now iptables
+systemctl enable --now ufw
+ufw enable
 
 
 #We enable some services on boot for the user to have a fully working system on the next boot
