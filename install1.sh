@@ -158,7 +158,7 @@ if [[ $doWeEncrypt == "1" ]]; then
     #If we are encrypted, we need to add LUKS specific kernel parameters to be able to boot on that encrypted drive
     #If the encrypted device is an SSD, we should enable regular trimming as well, this is done by using the luks.options=discard parameter to allow trimming, then enabling the systemd service fstrim which will do the trimming (done in the 2nd script).
     #Trimming is disabled by default on ext4, but we already set up the "infrastructure" to be able to quickly configure trimming in the future
-    #In this setup our partitions are built by layers (First encrypted LUKS, then LVM, then ext4), LUKS will have discarding (trimming) enabled, LVM passes the discard request automatically, then ext4 is left to be configured.
+    #In this setup our partitions are built by layers (First encrypted LUKS, then ext4), LUKS will have discarding (trimming) enabled, then ext4 is left to be configured.
     #Trimming an encrypted drive "leaks" information about which blocks are used and which are free, but here I'm looking for a middle ground between performance and absolute security.
     #If the device is not encrypted, nothing needs to be done because in that case we use btrfs which automatically enables asynchronous trimming if the drive is capable of TRIMs
     #We ask the user if they have a TRIM capable SSD
