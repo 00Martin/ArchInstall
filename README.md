@@ -24,7 +24,6 @@ And 2 desktop environments (wayland not used with Nvidia on KDE Plasma):
 - Gnome
 
 I also implemented the possibility to encrypt your root partition.
-Without encryption, the root filesystem used is btrfs, with encryption I went for ext4 for stability.
 
 
 Thanks to this script you should have a good base to install your favorite software but I would recommend against executing the file without changes since the script is designed for my configuration.
