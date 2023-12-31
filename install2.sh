@@ -103,11 +103,18 @@ ufw enable
 
 
 #We create a file to restrict login on ssh using root
-echo "PermitRootLogin no"    >>  /mnt/etc/ssh/sshd_config.d/20-deny_root.conf
+echo "PermitRootLogin no"    >>  /etc/ssh/sshd_config.d/20-deny_root.conf
 
 
 #We enable some services on boot for the user to have a fully working system on the next boot
 systemctl enable bluetooth.service
+
+#Check if SSD has to be trimmed
+shouldWeTrim=`cat /home/ssdTrim.doNotDelete`
+#If we should TRIM the SSD, we enable fstrim's timer which will enable the fstrim service when it's time to be run
+if [[ "$shouldWeTrim" == "1" ]]; then
+    systemctl enable fstrim.timer
+fi
 
 
 #Some manual intervention required from the user
