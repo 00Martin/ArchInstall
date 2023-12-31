@@ -157,9 +157,10 @@ echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 if [[ $doWeEncrypt == "1" ]]; then
     #If we are encrypted, we need to add LUKS specific kernel parameters to be able to boot on that encrypted drive
     #If the encrypted device is an SSD, we should enable regular trimming as well, this is done by using the luks.options=discard parameter to allow trimming, then enabling the systemd timer of fstrim which will do the trimming (done in the 2nd script).
-    #In this encrypted setup our partitions are built by layers (First encrypted LUKS, then btrfs), here we're gonna enable discarding for LUKS, then btrfs is left to be configured but normally btrfs automatically adds the discard flag if the SSD is capable of TRIM.
-    #Trimming an encrypted drive "leaks" information about which blocks are used and which are free, but here I'm looking for a middle ground between performance and absolute security.
+    #In this encrypted setup our partitions are built by layers (First encrypted LUKS, then btrfs), here we're gonna enable discarding for LUKS.
     #If the device is not encrypted, nothing needs to be done because in that case we use btrfs which automatically enables asynchronous trimming if the drive is capable of TRIMs
+    #Trimming an encrypted drive "leaks" information about which blocks are used and which are free, but here I'm looking for a middle ground between performance and absolute security.
+
     #We ask the user if they have a TRIM capable SSD
     echo -e "\n\nIs your primary storage device a TRIM capable SSD? (Answering wrong to this question can have consequences like data loss or reduced SSD longevity) [n/Y]"
     read answerTrim
