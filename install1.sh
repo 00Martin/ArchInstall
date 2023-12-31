@@ -204,12 +204,22 @@ if [[ $doWeEncrypt == "1" ]]; then
     echo -e "\nFind the HOOKS=... line that does not have a # in front of it and edit it. It must look EXACTLY like the following example:"
     echo -e "\nHOOKS=(base systemd keyboard autodetect modconf kms sd-vconsole block sd-encrypt filesystems fsck)"
     echo -e "\nOnce done, save and exit."
-    echo -e "\n\nWe now need to regenerate the initramfs, to do this you just need to execute the following command: arch-chroot /mnt mkinitcpio -p linux"
+    echo -e "\n\nWe now need to regenerate the initramfs, to do this you need to execute the following command: arch-chroot /mnt mkinitcpio -p linux"
     echo -e "\n\nIf on reboot you are not asked for the password of your encrypted partition, then something went wrong, I recommended you to start the installation over again."
 
 else
     #If not encrypted, we use normal systemd boot options
     echo "options root=/dev/$partitionNameRoot rw"    >>  /mnt/boot/loader/entries/arch.conf
+
+    #Finally, there's some work the user needs to do, we give them the instructions
+    echo -e "\n\n\nThere's some extra work to do, don't worry, it's not gonna take long."
+    echo -e "\nTake a picture of this before proceeding, the instructions will disappear."
+    echo -e "\n\nFirst, we need to edit the HOOKS of the mkinitcpio.conf file."
+    echo -e "\nTo do this, execute the following command:  nano /mnt/etc/mkinitcpio.conf"
+    echo -e "\nFind the HOOKS=... line that does not have a # in front of it and edit it. It must look EXACTLY like the following example:"
+    echo -e "\nHOOKS=(base systemd keyboard autodetect modconf kms sd-vconsole block filesystems fsck)"
+    echo -e "\nOnce done, save and exit."
+    echo -e "\n\nWe now need to regenerate the initramfs, to do this you need to execute the following command: arch-chroot /mnt mkinitcpio -p linux"
 fi
 
     echo -e "\n\nOptionally, you might want to restrict access to the boot partition when the OS is running."
