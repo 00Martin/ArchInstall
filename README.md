@@ -1,4 +1,9 @@
 # Martin's "automatic" Arch Linux install
+UPDATE 31/12/23 10PM: The script is currently broken, I have already spent about a dozen hours (20h-30h+) of just debugging alone, trying to find the issue.
+Arch gets installed, boots properly and more, but the display server/manager service does not start regardless of if we're using Gnome or KDE Plasma.
+I've browsed a good 30 forum posts at least but none of them corresponded to the issue I have here on my staging VM environment.
+I've almost completely reversed the code to a known working state without success either.
+I'm currently sitting without solutions, and will try working on the problem later in the start of 2024, in hope that the problem is only caused by a broken package.
 
 PLEASE READ ENTIRELY
 
