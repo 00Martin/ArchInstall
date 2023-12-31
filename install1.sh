@@ -152,6 +152,7 @@ echo "default arch"                 >>  /mnt/boot/loader/loader.conf
 touch /mnt/boot/loader/entries/arch.conf
 echo "title Arch Linux"             >   /mnt/boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
+
 #We add the microcode to the bootloader entries
 #If the user has an intel processor
 if [[ "$systemType" == "0" || "$systemType" == "2" ]]; then
@@ -161,6 +162,7 @@ fi
 if [[ "$systemType" == "1" ]]; then
     echo "initrd /amd-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
 fi
+
 echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 
 if [[ $doWeEncrypt == "1" ]]; then
