@@ -155,13 +155,13 @@ echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
 
 #We add the microcode to the bootloader entries
 #If the user has an intel processor
-if [[ "$systemType" == "0" || "$systemType" == "2" ]]; then
-    echo "initrd /intel-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
-fi
+#if [[ "$systemType" == "0" || "$systemType" == "2" ]]; then
+#    echo "initrd /intel-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
+#fi
 #If the user has an amd processor
-if [[ "$systemType" == "1" ]]; then
-    echo "initrd /amd-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
-fi
+#if [[ "$systemType" == "1" ]]; then
+#    echo "initrd /amd-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
+#fi
 
 echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 
