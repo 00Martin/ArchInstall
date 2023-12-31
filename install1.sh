@@ -30,7 +30,7 @@ echo -e "\nYour keyboard switched to Swiss French."
 
 
 #We ask the user if they have a NVMe, because drive names are different
-echo "Do you use a NVMe? [n/Y]"
+echo -e "\nDo you use a NVMe? [n/Y]"
 read answerNVMe
 
 if [[ $answerNVMe == "Y" ]]; then
