@@ -109,13 +109,6 @@ echo "PermitRootLogin no"    >>  /etc/ssh/sshd_config.d/20-deny_root.conf
 #We enable some services on boot for the user to have a fully working system on the next boot
 systemctl enable bluetooth.service
 
-#Check if SSD has to be trimmed
-shouldWeTrim=`cat /home/ssdTrim.doNotDelete`
-#If we should TRIM the SSD, we enable fstrim's timer which will enable the fstrim service when it's time to be run
-if [[ "$shouldWeTrim" == "1" ]]; then
-    systemctl enable fstrim.timer
-fi
-
 
 #Some manual intervention required from the user
 echo -e "\n\nATTENTION REQUIRED\nWe need to add our new user to the sudoer file, to do this ->\nUse the following command: EDITOR=nano visudo\nAdd this line with the correct username under the user privilege specification: NAMEOFUSER ALL=(ALL) ALL"
