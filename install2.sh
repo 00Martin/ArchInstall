@@ -103,6 +103,8 @@ ufw enable
 
 
 #We create a file to restrict login on ssh using root
+mkdir /etc/ssh
+mkdir /etc/ssh/sshd_config.d
 echo "PermitRootLogin no"    >>  /etc/ssh/sshd_config.d/20-deny_root.conf
 
 
