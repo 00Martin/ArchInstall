@@ -152,9 +152,9 @@ echo "default arch"                 >>  /mnt/boot/loader/loader.conf
 touch /mnt/boot/loader/entries/arch.conf
 echo "title Arch Linux"             >   /mnt/boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
-#DEPRECATED CODE
+#DEPRECATED CODE - The commented code is deprecated following a migration
 #For more detail about why this code is legacy, visit: https://archlinux.org/news/mkinitcpio-hook-migration-and-early-microcode/
-#We add the microcode to the bootloader entries
+#We add the microcode to the bootloader entries, it has to be done before the "initrd /initramfs-linux.img" entry
 #If the user has an intel processor
 #if [[ "$systemType" == "0" || "$systemType" == "2" ]]; then
 #    echo "initrd /intel-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
