@@ -152,17 +152,16 @@ echo "default arch"                 >>  /mnt/boot/loader/loader.conf
 touch /mnt/boot/loader/entries/arch.conf
 echo "title Arch Linux"             >   /mnt/boot/loader/entries/arch.conf
 echo "linux /vmlinuz-linux"         >>  /mnt/boot/loader/entries/arch.conf
-
-#We add the microcode to the bootloader entries
+#LEGACY: We add the microcode to the bootloader entries
+#See: https://archlinux.org/news/mkinitcpio-hook-migration-and-early-microcode/
 #If the user has an intel processor
-if [[ "$systemType" == "0" || "$systemType" == "2" ]]; then
-    echo "initrd /intel-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
-fi
+#if [[ "$systemType" == "0" || "$systemType" == "2" ]]; then
+#    echo "initrd /intel-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
+#fi
 #If the user has an amd processor
-if [[ "$systemType" == "1" ]]; then
-    echo "initrd /amd-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
-fi
-
+#if [[ "$systemType" == "1" ]]; then
+#    echo "initrd /amd-ucode.img"  >>  /mnt/boot/loader/entries/arch.conf
+#fi
 echo "initrd /initramfs-linux.img"  >>  /mnt/boot/loader/entries/arch.conf
 
 if [[ $doWeEncrypt == "1" ]]; then
@@ -176,7 +175,7 @@ if [[ $doWeEncrypt == "1" ]]; then
     echo -e "\n\nFirst, we need to edit the HOOKS of the mkinitcpio.conf file."
     echo -e "\nTo do this, execute the following command:  nano /mnt/etc/mkinitcpio.conf"
     echo -e "\nFind the HOOKS=... line that does not have a # in front of it and edit it. It must look EXACTLY like the following example:"
-    echo -e "\nHOOKS=(base systemd keyboard autodetect modconf kms sd-vconsole block sd-encrypt filesystems fsck)"
+    echo -e "\nHOOKS=(base systemd keyboard autodetect microcode modconf kms sd-vconsole block sd-encrypt filesystems fsck)"
     echo -e "\nOnce done, save and exit."
     echo -e "\n\nWe now need to regenerate the initramfs, to do this you need to execute the following command: arch-chroot /mnt mkinitcpio -p linux"
     echo -e "\n\nIf on reboot you are not asked for the password of your encrypted partition, then something went wrong, I recommended you to start the installation over again."
@@ -190,7 +189,7 @@ else
     echo -e "\n\nFirst, we need to edit the HOOKS of the mkinitcpio.conf file."
     echo -e "\nTo do this, execute the following command:  nano /mnt/etc/mkinitcpio.conf"
     echo -e "\nFind the HOOKS=... line that does not have a # in front of it and edit it. It must look EXACTLY like the following example:"
-    echo -e "\nHOOKS=(base systemd keyboard autodetect modconf kms sd-vconsole block filesystems fsck)"
+    echo -e "\nHOOKS=(base systemd keyboard autodetect microcode modconf kms sd-vconsole block filesystems fsck)"
     echo -e "\nOnce done, save and exit."
     echo -e "\n\nWe now need to regenerate the initramfs, to do this you need to execute the following command: arch-chroot /mnt mkinitcpio -p linux"
 fi
