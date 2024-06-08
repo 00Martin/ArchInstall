@@ -86,7 +86,7 @@ else
     else
 
         #We install everything needed for KDE Plasma Wayland, with a limited set of applications
-        pacman -S --noconfirm xorg plasma wayland plasma-wayland-session sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent merkuro kcalc elisa
+        pacman -S --noconfirm xorg plasma wayland plasma-workspace sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent merkuro kcalc elisa
 
     fi
     #We enable the Sddm service so KDE Plasma starts on boot
