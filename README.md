@@ -10,7 +10,7 @@ A little resume of what my script does:
 - Single boot (it must NOT be used for dualbooting, it will erase your disk, you are warned)
 - No swap
 - System in American English with Swiss French keyboard
-- No browser installed by default, but you can optionally install Brave Browser or Mozilla Firefox
+- No browser installed by default, but you can optionally install Brave Browser or Mozilla Firefox during the installation
 
 Choices :
 To make this script my universal install, I implemented a choice for 3 different types of systems :
