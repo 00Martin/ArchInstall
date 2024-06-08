@@ -27,6 +27,7 @@ I also implemented the possibility to encrypt your root partition.
 
 Thanks to this script you should have a good base to install your favorite software but I would recommend against executing the file without changes since the script is designed for my configuration.
 Keep in mind that with this kind of install you could encounter issues specific to your hardware, this is something you will have to troubleshoot yourself and could require advanced knowledge.
+Please also keep in mind that an upgrade to a package can break this script at any time, this is something I can only see during my next Arch installation.
 
 
 HOW TO USE :
