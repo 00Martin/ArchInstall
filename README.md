@@ -12,13 +12,13 @@ A little resume of what my script does:
 - System in American English with Swiss French keyboard
 - No browser installed by default, but you can optionally install Brave Browser or Mozilla Firefox during the installation
 
-Choices :
-To make this script my universal install, I implemented a choice for 3 different types of systems :
+Choices:
+To make this script my universal install, I implemented a choice for 3 different types of systems:
 - Full Intel (Intel CPU microcode)
 - Full AMD (Amd CPU microcode + Amd GPU drivers, NOT TESTED because I don't own AMD hardware)
 - Intel + Nvidia (Intel CPU microcode + Nvidia GPU drivers)
 
-And 2 desktop environments (wayland not used with Nvidia on KDE Plasma):
+And 2 desktop environments:
 - KDE Plasma
 - Gnome
 
