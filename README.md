@@ -20,7 +20,7 @@ To make this script my universal install, I implemented a choice for 3 different
 
 And 2 desktop environments:
 - KDE Plasma
-- Gnome
+- Gnome (not tested)
 
 I also implemented the possibility to encrypt your root partition.
 
