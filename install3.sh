@@ -84,5 +84,5 @@ sudo rm /home/sysType.doNotDelete
 sudo rm /home/deskEnv.doNotDelete
 
 
-#While not necessary, we reboot to apply the new keyboard and dns config
+#While not necessary, we reboot to start a clean session for the user
 reboot
