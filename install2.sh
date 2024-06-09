@@ -31,7 +31,7 @@ passwd      $username
 
 #We update all packages and download sudo
 pacman -Syu
-pacman -S --noconfirm           sudo
+pacman -S --noconfirm sudo
 
 
 #Installation of graphics driver and libraries
