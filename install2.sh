@@ -2,19 +2,9 @@
 #ArchInstall by 00Martin - https://github.com/00Martin
 #file: install2.sh
 
-#Some manual work is required during this script, these steps are a little more complicated then just automatically adding a line at the end of a conf file
-#For the pacman conf file, it is possible to do it by specifying the specific lines to make the changes, but it's bad practice because we risk making the script obsolete too quickly
-echo -e "\nWe want to allow the download of more diverse packages from the arch repository, to do so->\nOpen the pacman configuration file by doing: nano /etc/pacman.conf\nMake sure all 3 of the core, extra, multilib sources are uncommented"
-
-echo -e "\n\nThis step is a requirement otherwise we are gonna be missing on important libraries to make our graphical drivers work\n\n"
-
-#We ask the user if they allowed the additional arch sources
-echo "Have you done this ? [n/Y]"
-read answer
-
-
-#If it was done, we continue
-if [[ $answer == "Y" ]]; then
+#We add multilib at the end of the pacman configuration file (instead of uncommenting), so we don't have to ask the user to do it.
+echo "[multilib]"     >>  /etc/pacman.conf
+echo "Include = /etc/pacman.d/mirrorlist"     >>  /etc/pacman.conf
 
 
 #We enable networking
@@ -119,8 +109,3 @@ echo -e "\n\nATTENTION REQUIRED\nWe need to add our new user to the sudoer file,
 
 echo -e "\nOnce this step is done, you can reboot and start the next script. You will be logged in as a normal user, but you should not run this next script with sudo, the script itself will elevate privileges where needed."
 echo -e "\nAll files that are part of this set of scripts will be cleaned automatically at the end of the process. Basically, once the installation is done, you're good to go."
-
-#If the user did not uncomment the additional sources from the pacman config file, we stop
-else
-echo -e "\nPlease uncomment the sources and start the script again\n"
-fi
