@@ -75,7 +75,7 @@ else
 
 fi
 
-#We setup boot which we do the same way regarless of encryption
+#We setup the boot partition which we do the same way regarless of encryption
 mkfs.fat -F32 /dev/$partitionNameBoot
 mkdir /mnt/boot
 mount /dev/$partitionNameBoot /mnt/boot
