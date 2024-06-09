@@ -41,7 +41,7 @@ read answerPrograms
 if [[ $answerPrograms == "Y" ]]; then
 
     #Lists containing the name of packages to potentially install
-    pacmanPackages=("firefox" "discord" "vlc" "chromium" "signal-desktop")
+    pacmanPackages=("firefox" "discord" "vlc" "chromium" "signal-desktop" "wireguard-tools")
     aurPackages=("brave-bin" "spotify" "minecraft-launcher" "fastfetch" "protonvpn-cli" "tlpui")
     flatpakPackages=("skype")
 
