@@ -34,8 +34,8 @@ HOW TO USE :
 --> You only need to download install1.sh, the other files will be downloaded automatically to the home folder.
 --> When the system reboots, go to the home folder and run the next install(number).sh script.
 --> If any manual work is required, it'll be documented during the installation.
---> You don't need to execute anything more than install(number).sh, files with a different naming will be executed during the process
---> All files will be cleaned at the end of the process, you don't need to delete anything yourself
+--> You don't need to execute anything more than install(number).sh, files with a different naming will be executed during the process.
+--> All files will be cleaned at the end of the process, you don't need to delete any leftover files.
 
 Feel free to use, copy or modify the script as you will.
 Although I don't require it, It would be nice of you to leave my author note and github link at the top of the scripts, that way anyone can find my work again.
