@@ -31,7 +31,7 @@ Please also keep in mind that an upgrade to a package can break this script at a
 
 
 HOW TO USE :
---> You only need to download install1.sh, the other files will be downloaded automatically to the home folder.
+--> You only need to download install1.sh, the other files will be downloaded automatically to the home folder (with the command 'curl -LO raw.githubusercontent.com/00Martin/ArchInstall/main/install1.sh').
 --> When the system reboots, go to the home folder and run the next install(number).sh script.
 --> If any manual work is required, it'll be documented during the installation.
 --> You don't need to execute anything more than install(number).sh, files with a different naming will be executed during the process.
