@@ -3,7 +3,7 @@
 #file: install2.sh
 
 #We add multilib at the end of the pacman configuration file (instead of uncommenting), so we don't have to ask the user to do it.
-echo "[multilib]"     >>  /etc/pacman.conf
+echo "[multilib]"                             >>  /etc/pacman.conf
 echo "Include = /etc/pacman.d/mirrorlist"     >>  /etc/pacman.conf
 
 
