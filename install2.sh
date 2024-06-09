@@ -80,6 +80,8 @@ else
     if [[ "$sysType" == "2" ]]; then
 
         #We install everything needed for KDE Plasma Xorg, with a limited set of applications
+        #Nowadays KDE Plasma 6 gets installed with wayland anyway, but I noticed that this command installs less packages (less storage used).
+        #Since it's still difficult to make KDE Plasma wayland work well with Nvidia as of 2024, I leave this as a seperate command for now.
         pacman -S --noconfirm xorg plasma sddm bluedevil konsole dolphin kcron ksystemlog partitionmanager ark okular kate kompare gwenview ktorrent merkuro kcalc elisa
 
     #For the rest we install the wayland version
