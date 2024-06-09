@@ -50,7 +50,7 @@ fi
 #For Nvidia graphics cards
 if [[ "$sysType" == "2" ]]; then
     #We install the nvidia drivers for a standard kernel release and some basic libraries (the rest will be downloaded with the --needed parameter)
-    pacman -S --noconfirm --needed  nvidia lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
+    pacman -S --noconfirm --needed nvidia lib32-nvidia-utils nvidia-settings vulkan-icd-loader lib32-vulkan-icd-loader
 fi
 
 
