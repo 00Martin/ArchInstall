@@ -1,3 +1,5 @@
+# THIS PROJECT WILL NOW GET UPDATED ON MY CODEBERG, YOU CAN FIND MY CODEBERG [HERE](https://codeberg.org/mrtn).
+
 # Martin's "automatic" Arch Linux install
 PLEASE READ ENTIRELY
 
